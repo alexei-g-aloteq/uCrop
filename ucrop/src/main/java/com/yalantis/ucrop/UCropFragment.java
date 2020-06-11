@@ -85,7 +85,7 @@ public class UCropFragment extends Fragment {
     private UCropView mUCropView;
     private GestureCropImageView mGestureCropImageView;
     private OverlayView mOverlayView;
-    private ViewGroup mWrapperStateAspectRatio, mWrapperStateRotate, mWrapperStateScale;
+    private ViewGroup mWrapperStateAspectRatio, mWrapperStateRotate, mWrapperStateScale, mWrapperStateDone;
     private ViewGroup mLayoutAspectRatio, mLayoutRotate, mLayoutScale;
     private List<ViewGroup> mCropAspectRatioViews = new ArrayList<>();
     private TextView mTextViewRotateAngle, mTextViewScalePercent;
@@ -161,6 +161,9 @@ public class UCropFragment extends Fragment {
             mWrapperStateRotate.setOnClickListener(mStateClickListener);
             mWrapperStateScale = view.findViewById(R.id.state_scale);
             mWrapperStateScale.setOnClickListener(mStateClickListener);
+
+            mWrapperStateDone = view.findViewById(R.id.state_done);
+            mWrapperStateDone.setOnClickListener(mStateClickDoneListener);
 
             mLayoutAspectRatio = view.findViewById(R.id.layout_aspect_ratio);
             mLayoutRotate = view.findViewById(R.id.layout_rotate_wheel);
@@ -475,6 +478,13 @@ public class UCropFragment extends Fragment {
             if (!v.isSelected()) {
                 setWidgetState(v.getId());
             }
+        }
+    };
+
+    private final View.OnClickListener mStateClickDoneListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            cropAndSaveImage();
         }
     };
 
