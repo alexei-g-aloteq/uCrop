@@ -6,6 +6,7 @@
         android:id="@+id/menu_crop"
         android:icon="@drawable/ucrop_ic_done"
         android:title="@string/ucrop_menu_crop"
+        android:visible="false"
         app:showAsAction="ifRoom"/>
 
     <item
